@@ -1,11 +1,13 @@
-# GitHub SSO(SAML) 적용 후 CI/CD 영향 검증
+# How to Set Up Azure App-Based SSO for GitHub Enterprise — and What Happens to CI/CD After Enforcement
+
+![SAML Single Sign-On — 오늘 이걸 설정해봅시다](experiment-images/main-image-saml-sso.png)
 
 ## 1. 목적
 
 본 문서는 아래 두 가지를 **실제 동작 기반으로 검증**하기 위해 작성되었습니다.
 
-> 1. **Entra ID(Azure AD) ↔ GitHub Enterprise 간 SAML SSO를 어떻게 설정하는가?**
-> 2. **SSO Enforce 이후에도 서비스 계정(PAT 기반) CI/CD 배포가 정상 동작하는가?**
+> 1. **Azure Entra ID의 Enterprise Application을 통해 GitHub Enterprise에 SAML SSO를 어떻게 설정하는가?**
+> 2. **SSO Enforce 이후 서비스 계정(PAT 기반) CI/CD 배포에 어떤 영향이 발생하며, 어떻게 복구하는가?**
 
 ### 다루는 범위
 
@@ -172,10 +174,10 @@ Settings → Developer settings → Personal access tokens → Tokens (classic) 
 
 #### 4-2. git push 테스트
 
-[simple-git-clone-pat.sh](simple-git-clone-pat.sh) 스크립트 실행:
+[super-simple-cicd-code.sh](super-simple-cicd-code.sh) 스크립트 실행:
 
 ```bash
-./simple-git-clone-pat.sh
+./super-simple-cicd-code.sh
 ```
 
 #### ✅ 결과: push 성공 — Baseline 확보
@@ -339,7 +341,7 @@ git push
 ```
 sso-org-test/
 ├── README.md                         ← 본 문서
-├── simple-git-clone-pat.sh           ← Baseline 테스트 스크립트
+├── super-simple-cicd-code.sh         ← Baseline CI/CD 테스트 스크립트
 ├── experiment-images/                ← 검증 스크린샷
 │   ├── commit-success-without-sso-saml.png
 │   ├── commit-fail-with-sso-saml.png
