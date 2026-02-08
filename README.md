@@ -1,4 +1,4 @@
-# How to Set Up Azure App-Based SSO for GitHub Enterprise — and What Happens to CI/CD After Enforcement
+# GitHub Enterprise SSO 설정 가이드 및 CI/CD 영향 검증
 
 ![SAML Single Sign-On — 오늘 이걸 설정해봅시다](experiment-images/main-image-saml-sso.png)
 
